@@ -1,19 +1,20 @@
 package org.example.demo;
 
 import javafx.event.ActionEvent;
+import javafx.scene.control.Label; // Certifique-se de que esta é a importação correta
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class HelloController {
 
     @FXML
-    private Label brinquedo;
+    private static Label mensagemLabel;
 
     @FXML
     protected void onBrinquedoButtonClick() {
@@ -27,6 +28,20 @@ public class HelloController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        }
+
+    public void onBrincarButtonClick() {
+        //System.out.println("Hora de Brincar!");
+        Brinquedo meuBrinquedo = new Brinquedo("pequeno", "amarelo", "plástico");
+        meuBrinquedo.brincar();
+
+    }
+
+
+    public void onGuardarButtonClick() {
+        //System.out.println("Vamos guardar os brinquedos");
+        Brinquedo meuBrinquedo = new Brinquedo("pequeno", "amarelo", "plástico");
+        meuBrinquedo.guardar();
     }
 
     @FXML
@@ -39,10 +54,8 @@ public class HelloController {
             stage.setTitle("Cachorros");
             stage.show();
         } catch (IOException e) {
-            e.printStackTrace(); // Log de erro, se necessário
+            e.printStackTrace();
         }
-
-
     }
 
     @FXML
@@ -157,6 +170,9 @@ public class HelloController {
         }
 
     }
+
+
+
 }
 
 

@@ -40,7 +40,7 @@ package org.example.demo;
 
         // Método para brincar com os brinquedos
         public void brincar() {
-            System.out.println("Brincar com os brinquedos !");
+            System.out.println("Brincando com os brinquedos !");
         }
 
         // Método para guardar os brinquedos

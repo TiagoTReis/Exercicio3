@@ -6,17 +6,18 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import org.example.demo.HelloController?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.HelloController">
    <children>
-      <Button layoutX="418.0" layoutY="175.0" mnemonicParsing="false" text="Brincar" />
-      <Button layoutX="415.0" layoutY="246.0" mnemonicParsing="false" text="Guardar" />
+      <Button layoutX="418.0" layoutY="175.0" onAction="#onBrincarButtonClick" mnemonicParsing="false" text="Brincar" textAlignment="CENTER"/>
+      <Button layoutX="415.0" layoutY="246.0" onAction="#onGuardarButtonClick" mnemonicParsing="false" text="Guardar" textAlignment="CENTER" />
       <Label layoutX="200.0" layoutY="27.0" text="Brinquedos">
          <font>
             <Font size="40.0" />
          </font>
       </Label>
+
       <ImageView fitHeight="213.0" fitWidth="288.0" layoutX="56.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@brinquedos.png" />
