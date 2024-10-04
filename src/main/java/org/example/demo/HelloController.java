@@ -109,6 +109,17 @@ public class HelloController {
             e.printStackTrace();
         }
     }
+    public void onConstuirButtonClick() {
+        //System.out.println("Hora de frear");
+        Casas casas = new Casas("Amarela", "Grande", "Retangular");
+        casas.construir();
+    }
+
+    public void onPintarButtonClick() {
+        //System.out.println("Hora de frear");
+        Casas casas = new Casas("Amarela", "Grande", "Retangular");
+        casas.pintar();
+    }
 
     @FXML
     protected void onEletronicosButtonClick() {
