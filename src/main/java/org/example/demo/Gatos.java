@@ -40,12 +40,12 @@ public class Gatos {
 
     // Método para miar os gatos
     public void miar() {
-        System.out.println("Gato mia!");
+        System.out.println("O gatinho esta miando");
     }
 
     // Método para arranhar a gatos
     public void arranhar() {
-        System.out.println("Gato arranhando");
+        System.out.println("O gatinho esta arranhando");
     }
 
     // Método para comer a gatos

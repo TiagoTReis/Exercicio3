@@ -188,7 +188,17 @@ public class HelloController {
             e.printStackTrace();
         }
     }
+    public void onArranharButtonClick(ActionEvent actionEvent) {
+        //System.out.println("O gato está arranhando");
+        Gatos gatoss = new Gatos("persa", "cinza", "pequeno");
+        gatoss.arranhar();
+    }
 
+    public void onMiarButtonClick(ActionEvent actionEvent) {
+        //System.out.println("O gato está miando");
+        Gatos gatoss = new Gatos("persa", "cinza", "pequeno");
+        gatoss.miar();
+    }
     @FXML
     protected void onInstrumentosMusicaisButtonClick(ActionEvent actionEvent) {
         try {
@@ -232,7 +242,8 @@ public class HelloController {
 
     }
 
-  }
+
+}
 
 
 
