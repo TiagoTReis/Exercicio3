@@ -46,12 +46,12 @@ public class Cachorros {
 
     // Método para latir o cachorros
     public void latir() {
-        System.out.println("Cachorro latindo.");
+        System.out.println("O Cachorro está latindo.");
     }
 
     // Método para correr o cachorros
     public void correr() {
-        System.out.println("Cachorro correndo.");
+        System.out.println("O Cachorro está correndo.");
     }
 
     // Método para exibir informações do cachorros

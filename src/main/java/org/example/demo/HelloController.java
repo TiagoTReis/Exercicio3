@@ -57,6 +57,17 @@ public class HelloController {
             e.printStackTrace();
         }
     }
+    public void onLatirButtonClick() {
+        //System.out.println("O Cachorro está latindo");
+        Cachorros cachorros = new Cachorros("Doberman", "40", "4");
+        cachorros.latir();
+    }
+
+    public void onCorrerButtonClick(ActionEvent actionEvent) {
+        //System.out.println("O Cachorro está correndo");
+        Cachorros cachorros = new Cachorros("Doberman", "40", "4");
+        cachorros.correr();
+    }
 
     @FXML
     protected void onCarrosButtonClick() {
