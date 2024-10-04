@@ -163,6 +163,18 @@ public class HelloController {
         }
     }
 
+    public void onComerButtonClick() {
+        //System.out.println("Hora de comer a fruta");
+        Frutas frutas = new Frutas("doce", "amarela", "macio");
+        frutas.comer();
+    }
+
+    public void onLavarButtonClick() {
+        //System.out.println("Hora de comer a fruta");
+        Frutas frutas = new Frutas("doce", "amarela", "macio");
+        frutas.lavar();
+    }
+
     @FXML
     protected void onGatosButtonClick() {
         try {
@@ -219,7 +231,8 @@ public class HelloController {
         }
 
     }
-}
+
+  }
 
 
 
