@@ -8,10 +8,10 @@
 <?import javafx.scene.text.Font?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:controller="org.example.demo.HelloController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="418.0" layoutY="175.0" mnemonicParsing="false" text="Guardar" />
-      <Button layoutX="426.0" layoutY="243.0" mnemonicParsing="false" text="Ligar" />
+      <Button layoutX="418.0" layoutY="175.0" onAction="#onGuardar2ButtonClick" mnemonicParsing="false" text="Guardar" textAlignment="CENTER"/>
+      <Button layoutX="426.0" layoutY="243.0" onAction="#onLigarButtonClick" mnemonicParsing="false" text="Ligar" textAlignment="CENTER"/>
       <Label layoutX="204.0" layoutY="23.0" text="Eletronicos">
          <font>
             <Font size="40.0" />

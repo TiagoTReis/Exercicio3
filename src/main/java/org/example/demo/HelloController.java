@@ -28,7 +28,7 @@ public class HelloController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        }
+    }
 
     public void onBrincarButtonClick() {
         //System.out.println("Hora de Brincar!");
@@ -57,6 +57,7 @@ public class HelloController {
             e.printStackTrace();
         }
     }
+
     public void onLatirButtonClick() {
         //System.out.println("O Cachorro está latindo");
         Cachorros cachorros = new Cachorros("Doberman", "40", "4");
@@ -109,14 +110,15 @@ public class HelloController {
             e.printStackTrace();
         }
     }
+
     public void onConstuirButtonClick() {
-        //System.out.println("Hora de frear");
+        //System.out.println("Hora de construir a casa");
         Casas casas = new Casas("Amarela", "Grande", "Retangular");
         casas.construir();
     }
 
     public void onPintarButtonClick() {
-        //System.out.println("Hora de frear");
+        //System.out.println("Hora de pintar a casa");
         Casas casas = new Casas("Amarela", "Grande", "Retangular");
         casas.pintar();
     }
@@ -133,6 +135,18 @@ public class HelloController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void onGuardar2ButtonClick() {
+        //System.out.println("Hora de guardar os eletronicos");
+        Eletronicos eletronicos = new Eletronicos("Retangular", "Cinza", "Plastico");
+        eletronicos.guardar();
+    }
+
+    public void onLigarButtonClick() {
+        //System.out.println("Hora de guardar os eletronicos");
+        Eletronicos eletronicos = new Eletronicos("Retangular", "Cinza", "Plastico");
+        eletronicos.ligar();
     }
 
     @FXML
@@ -192,7 +206,7 @@ public class HelloController {
     }
 
     @FXML
-    protected void  onTimesButtonClick() {
+    protected void onTimesButtonClick() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Times.fxml"));
             Parent root = loader.load();
@@ -205,9 +219,9 @@ public class HelloController {
         }
 
     }
-
-
-
 }
+
+
+
 
 
