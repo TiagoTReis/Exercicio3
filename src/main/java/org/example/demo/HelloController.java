@@ -260,12 +260,19 @@ public class HelloController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+    }
+    public void onJogarButtonClick() {
+        //System.out.println("Bora jogar time!");
+        Times times = new Times("Rio de Janeiro", "Vermelho", "Maracana");
+        times.jogar();
     }
 
-
-
-}
+    public void onGanharButtonClick() {
+        //System.out.println("Bora ganhar time!");
+        Times times = new Times("Rio de Janeiro", "Vermelho", "Maracana");
+        times.ganhar();
+    }
+    }
 
 
 

@@ -40,12 +40,12 @@ public class Times {
 
     // Método para jogar o time
     public void jogar() {
-        System.out.println("jogar no time!");
+        System.out.println("Bora jogar no time!");
     }
 
     // Método para ganhar a time
     public void ganhar() {
-        System.out.println("Para o time ganhar");
+        System.out.println("Bora ganhar time");
     }
 
     // Método para perder a time
