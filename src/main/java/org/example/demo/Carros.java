@@ -40,12 +40,12 @@ public class Carros {
 
     // Método para acelerar o carro
     public void acelerar() {
-        System.out.println("Acelera o carro!");
+        System.out.println("Hora de acelerar!");
     }
 
     // Método para frear o carros
     public void frear() {
-        System.out.println("Frear o carro");
+        System.out.println("Hora de frear o carro");
     }
 
     // Método para abastecer o carros

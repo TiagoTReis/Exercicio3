@@ -8,10 +8,10 @@
 <?import javafx.scene.text.Font?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:controller="org.example.demo.HelloController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="418.0" layoutY="175.0" mnemonicParsing="false" text="Acelerar" />
-      <Button layoutX="426.0" layoutY="243.0" mnemonicParsing="false" text="Frear" />
+      <Button layoutX="418.0" layoutY="175.0" onAction="#onAcelerarButtonClick" mnemonicParsing="false" text="Acelerar" textAlignment="CENTER"/>
+      <Button layoutX="426.0" layoutY="243.0" onAction="#onFrearButtonClick" mnemonicParsing="false" text="Frear" textAlignment="CENTER"/>
       <Label layoutX="253.0" layoutY="26.0" text="Carros">
          <font>
             <Font size="40.0" />

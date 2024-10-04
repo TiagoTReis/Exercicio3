@@ -83,6 +83,19 @@ public class HelloController {
         }
     }
 
+    public void onAcelerarButtonClick() {
+        //System.out.println("Hora de acelerar");
+        Carros carros = new Carros("Azul", "Porsche", "Esportivo");
+        carros.acelerar();
+    }
+
+    public void onFrearButtonClick() {
+        //System.out.println("Hora de frear");
+        Carros carros = new Carros("Azul", "Porsche", "Esportivo");
+        carros.frear();
+
+    }
+
     @FXML
     protected void onCasasButtonClick() {
         try {
