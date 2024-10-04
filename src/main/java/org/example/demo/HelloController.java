@@ -236,6 +236,17 @@ public class HelloController {
             e.printStackTrace();
         }
     }
+    public void onLutarButtonClick() {
+        System.out.println("Pokebola vai!!!");
+        Pokemon pokemon = new Pokemon("amarelo", "eletrico", "6kg");
+        pokemon.lutar();
+    }
+
+    public void onDefenderButtonClick() {
+        //System.out.println("Pokebola vai!!!");
+        Pokemon pokemon = new Pokemon("amarelo", "eletrico", "6kg");
+        pokemon.defender();
+    }
 
     @FXML
     protected void onTimesButtonClick() {

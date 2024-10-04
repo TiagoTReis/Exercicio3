@@ -45,12 +45,12 @@ public class Pokemon {
 
     // Método para lutar os pokemon
     public void lutar() {
-        System.out.println("lutar os pokemon!");
+        System.out.println("Pikachu choque do trovão");
     }
 
     // Método para defender o pokemon
     public void defender() {
-        System.out.println("defender os pokemon !");
+        System.out.println("Se esconde Pikachu !");
     }
 
     // Método para exibir informações do pokemon
