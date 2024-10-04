@@ -212,7 +212,17 @@ public class HelloController {
             e.printStackTrace();
         }
     }
+    public void onAfinarButtonClick(ActionEvent actionEvent) {
+        //System.out.println("Bora afinar os instrumentos");
+        InstrumentosMusicais instrumentosMusicais = new InstrumentosMusicais("corda", "medio", "madeira");
+        instrumentosMusicais.afinar();
+    }
 
+    public void onTocarButtonClick() {
+        //System.out.println("Bora tocar os instrumentos");
+        InstrumentosMusicais instrumentosMusicais = new InstrumentosMusicais("corda", "medio", "madeira");
+        instrumentosMusicais.tocar();
+    }
     @FXML
     protected void onPokemonButtonClick(ActionEvent actionEvent) {
         try {
@@ -241,6 +251,7 @@ public class HelloController {
         }
 
     }
+
 
 
 }

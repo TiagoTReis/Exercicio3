@@ -40,12 +40,12 @@ public class InstrumentosMusicais {
 
     // Método para tocar os instrumentos musicais
     public void tocar() {
-        System.out.println("Tocar os instrumentos musicais !");
+        System.out.println("Bora tocar os instrumentos musicais !");
     }
 
     // Método para afinar os instrumentos musicais
     public void afinar() {
-        System.out.println("Afinar os instrumentos musicais!");
+        System.out.println("Vamos afinar os instrumentos musicais!");
     }
 
     // Método para ouvir o instrumentos musicais
