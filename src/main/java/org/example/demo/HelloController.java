@@ -14,7 +14,7 @@ import java.io.IOException;
 public class HelloController {
 
     @FXML
-    private static Label mensagemLabel;
+    private Label mensagemLabel;
 
     @FXML
     protected void onBrinquedoButtonClick() {
@@ -85,13 +85,13 @@ public class HelloController {
     }
 
     public void onAcelerarButtonClick() {
-        //System.out.println("Hora de acelerar");
+        mensagemLabel.setText("Bora Acelerar");
         Carros carros = new Carros("Azul", "Porsche", "Esportivo");
         carros.acelerar();
     }
 
     public void onFrearButtonClick() {
-        //System.out.println("Hora de frear");
+        mensagemLabel.setText("Bora Frear o carro");
         Carros carros = new Carros("Azul", "Porsche", "Esportivo");
         carros.frear();
 
@@ -112,13 +112,13 @@ public class HelloController {
     }
 
     public void onConstuirButtonClick() {
-        //System.out.println("Hora de construir a casa");
+        mensagemLabel.setText("Hora de construir a casa");
         Casas casas = new Casas("Amarela", "Grande", "Retangular");
         casas.construir();
     }
 
     public void onPintarButtonClick() {
-        //System.out.println("Hora de pintar a casa");
+        mensagemLabel.setText("Hora de pintar a casa");
         Casas casas = new Casas("Amarela", "Grande", "Retangular");
         casas.pintar();
     }
@@ -138,13 +138,13 @@ public class HelloController {
     }
 
     public void onGuardar2ButtonClick() {
-        //System.out.println("Hora de guardar os eletronicos");
+        mensagemLabel.setText("Hora de guardar os eletronicos");
         Eletronicos eletronicos = new Eletronicos("Retangular", "Cinza", "Plastico");
         eletronicos.guardar();
     }
 
     public void onLigarButtonClick() {
-        //System.out.println("Hora de guardar os eletronicos");
+        mensagemLabel.setText("Hora de ligar os eletronicos");
         Eletronicos eletronicos = new Eletronicos("Retangular", "Cinza", "Plastico");
         eletronicos.ligar();
     }
@@ -164,13 +164,13 @@ public class HelloController {
     }
 
     public void onComerButtonClick() {
-        //System.out.println("Hora de comer a fruta");
+        mensagemLabel.setText("Hora de comer a fruta");
         Frutas frutas = new Frutas("doce", "amarela", "macio");
         frutas.comer();
     }
 
     public void onLavarButtonClick() {
-        //System.out.println("Hora de comer a fruta");
+        mensagemLabel.setText("Hora de lavar a fruta");
         Frutas frutas = new Frutas("doce", "amarela", "macio");
         frutas.lavar();
     }
@@ -189,13 +189,13 @@ public class HelloController {
         }
     }
     public void onArranharButtonClick(ActionEvent actionEvent) {
-        //System.out.println("O gato está arranhando");
+        mensagemLabel.setText("O gatinho está arranhando");
         Gatos gatoss = new Gatos("persa", "cinza", "pequeno");
         gatoss.arranhar();
     }
 
     public void onMiarButtonClick(ActionEvent actionEvent) {
-        //System.out.println("O gato está miando");
+        mensagemLabel.setText("O gatinho está miando");
         Gatos gatoss = new Gatos("persa", "cinza", "pequeno");
         gatoss.miar();
     }
@@ -213,13 +213,13 @@ public class HelloController {
         }
     }
     public void onAfinarButtonClick(ActionEvent actionEvent) {
-        //System.out.println("Bora afinar os instrumentos");
+        mensagemLabel.setText("Bora afinar os instrumentos");
         InstrumentosMusicais instrumentosMusicais = new InstrumentosMusicais("corda", "medio", "madeira");
         instrumentosMusicais.afinar();
     }
 
     public void onTocarButtonClick() {
-        //System.out.println("Bora tocar os instrumentos");
+        mensagemLabel.setText("Bora tocar os instrumentos");
         InstrumentosMusicais instrumentosMusicais = new InstrumentosMusicais("corda", "medio", "madeira");
         instrumentosMusicais.tocar();
     }
@@ -238,12 +238,13 @@ public class HelloController {
     }
     public void onLutarButtonClick() {
         System.out.println("Pokebola vai!!!");
+        mensagemLabel.setText("Pikachu raio de trovão");
         Pokemon pokemon = new Pokemon("amarelo", "eletrico", "6kg");
         pokemon.lutar();
     }
 
     public void onDefenderButtonClick() {
-        //System.out.println("Pokebola vai!!!");
+        mensagemLabel.setText("Corre Pikachu!!!");
         Pokemon pokemon = new Pokemon("amarelo", "eletrico", "6kg");
         pokemon.defender();
     }
@@ -262,13 +263,13 @@ public class HelloController {
         }
     }
     public void onJogarButtonClick() {
-        //System.out.println("Bora jogar time!");
+        mensagemLabel.setText("Bora jogar time!");
         Times times = new Times("Rio de Janeiro", "Vermelho", "Maracana");
         times.jogar();
     }
 
     public void onGanharButtonClick() {
-        //System.out.println("Bora ganhar time!");
+        mensagemLabel.setText("Bora ganhar time!");
         Times times = new Times("Rio de Janeiro", "Vermelho", "Maracana");
         times.ganhar();
     }

@@ -7,11 +7,10 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane fx:controller="org.example.demo.HelloController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.HelloController">
    <children>
-      <Button layoutX="418.0" layoutY="175.0" onAction="#onConstuirButtonClick" mnemonicParsing="false" text="Construir" textAlignment="CENTER"/>
-      <Button layoutX="426.0" layoutY="243.0" onAction="#onPintarButtonClick" mnemonicParsing="false" text="Pintar" textAlignment="CENTER" />
+      <Button layoutX="408.0" layoutY="139.0" mnemonicParsing="false" onAction="#onConstuirButtonClick" prefHeight="50.0" prefWidth="150.0" text="Construir" textAlignment="CENTER" />
+      <Button layoutX="408.0" layoutY="242.0" mnemonicParsing="false" onAction="#onPintarButtonClick" prefHeight="50.0" prefWidth="150.0" text="Pintar" textAlignment="CENTER" />
       <Label layoutX="253.0" layoutY="26.0" text="Casas">
          <font>
             <Font size="40.0" />
@@ -22,5 +21,6 @@
             <Image url="@casas.png" />
          </image>
       </ImageView>
+      <Label fx:id="mensagemLabel" layoutX="421.0" layoutY="200.0" text="" />
    </children>
 </Pane>

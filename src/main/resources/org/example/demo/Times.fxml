@@ -7,11 +7,10 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane fx:controller="org.example.demo.HelloController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.HelloController">
    <children>
-      <Button layoutX="440.0" layoutY="175.0" onAction="#onJogarButtonClick" mnemonicParsing="false" text="Jogar" textAlignment="CENTER"/>
-      <Button layoutX="429.0" layoutY="242.0" onAction="#onGanharButtonClick" mnemonicParsing="false" text="Ganhar" textAlignment="CENTER"/>
+      <Button layoutX="392.0" layoutY="127.0" mnemonicParsing="false" onAction="#onJogarButtonClick" prefHeight="50.0" prefWidth="150.0" text="Jogar" textAlignment="CENTER" />
+      <Button layoutX="392.0" layoutY="236.0" mnemonicParsing="false" onAction="#onGanharButtonClick" prefHeight="50.0" prefWidth="150.0" text="Ganhar" textAlignment="CENTER" />
       <Label layoutX="229.0" layoutY="23.0" text="Times">
          <font>
             <Font size="40.0" />
@@ -22,5 +21,6 @@
             <Image url="@Times.png" />
          </image>
       </ImageView>
+      <Label fx:id="mensagemLabel" layoutX="392.0" layoutY="200.0" text="" />
    </children>
 </Pane>
