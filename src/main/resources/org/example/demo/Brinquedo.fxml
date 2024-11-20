@@ -1,27 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<?import org.example.demo.HelloController?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.HelloController">
    <children>
-      <Button layoutX="418.0" layoutY="175.0" onAction="#onBrincarButtonClick" mnemonicParsing="false" text="Brincar" textAlignment="CENTER"/>
-      <Button layoutX="415.0" layoutY="246.0" onAction="#onGuardarButtonClick" mnemonicParsing="false" text="Guardar" textAlignment="CENTER" />
-      <Label layoutX="200.0" layoutY="27.0" text="Brinquedos">
+      <Button layoutX="358.0" layoutY="98.0" mnemonicParsing="false" onAction="#onBrincarButtonClick" prefHeight="35.0" prefWidth="85.0" text="Brincar" textAlignment="CENTER" />
+      <Button layoutX="478.0" layoutY="98.0" mnemonicParsing="false" onAction="#onGuardarButtonClick" prefHeight="35.0" prefWidth="85.0" text="Guardar" textAlignment="CENTER" />
+      <Label layoutX="200.0" layoutY="25.0" text="Brinquedos">
          <font>
             <Font size="40.0" />
          </font>
       </Label>
-
-      <ImageView fitHeight="213.0" fitWidth="288.0" layoutX="56.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="217.0" fitWidth="308.0" layoutX="35.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@brinquedos.png" />
          </image>
       </ImageView>
+      <Label fx:id="mensagemLabel" layoutX="421.0" layoutY="200.0" text="" />
+      <Button layoutX="330.0" layoutY="348.0" mnemonicParsing="false" text="Criar" onAction="#onCriarButtonClick" />
+      <Button layoutX="526.0" layoutY="348.0" mnemonicParsing="false" text="Editar" />
+      <Button layoutX="421.0" layoutY="348.0" mnemonicParsing="false" text="Apagar" />
+      <Label layoutX="338.0" layoutY="170.0" text="Tamanho" />
+      <TextField fx:id="tamanhoField" layoutX="401.0" layoutY="169.0" />
+      <Label layoutX="350.0" layoutY="219.0" text="Cor" />
+      <TextField fx:id="corField"   layoutX="401.0" layoutY="217.0" />
+      <Label layoutX="338.0" layoutY="264.0" text="Material" />
+      <TextField fx:id="materialField" layoutX="400.0" layoutY="259.0" />
+      <ChoiceBox layoutX="326.0" layoutY="304.0" prefHeight="25.0" prefWidth="249.0" />
+
    </children>
 </Pane>

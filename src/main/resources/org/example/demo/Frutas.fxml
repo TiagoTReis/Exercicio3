@@ -2,25 +2,29 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.HelloController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.HelloController">
    <children>
-      <Button layoutX="387.0" layoutY="130.0" mnemonicParsing="false" onAction="#onComerButtonClick" prefHeight="50.0" prefWidth="150.0" text="Comer" textAlignment="CENTER" />
-      <Button layoutX="387.0" layoutY="236.0" mnemonicParsing="false" onAction="#onLavarButtonClick" prefHeight="50.0" prefWidth="150.0" text="Lavar" textAlignment="CENTER" />
+      <Button layoutX="322.0" layoutY="119.0" mnemonicParsing="false" onAction="#onComerButtonClick" prefHeight="50.0" prefWidth="150.0" text="Comer" textAlignment="CENTER" />
+      <Button layoutX="322.0" layoutY="208.0" mnemonicParsing="false" onAction="#onLavarButtonClick" prefHeight="50.0" prefWidth="150.0" text="Lavar" textAlignment="CENTER" />
       <Label layoutX="247.0" layoutY="26.0" text="Frutas">
          <font>
             <Font size="40.0" />
          </font>
       </Label>
-      <ImageView fitHeight="275.0" fitWidth="315.0" layoutX="122.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="275.0" fitWidth="315.0" layoutX="56.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@frutas.png" />
          </image>
       </ImageView>
-      <Label fx:id="mensagemLabel" layoutX="387.0" layoutY="202.0" text="" />
+      <TextField layoutX="274.0" layoutY="296.0" prefHeight="25.0" prefWidth="250.0" />
+      <Button layoutX="274.0" layoutY="343.0" mnemonicParsing="false" text="Criar" />
+      <Button layoutX="372.0" layoutY="343.0" mnemonicParsing="false" text="Apagar" />
+      <Button layoutX="477.0" layoutY="343.0" mnemonicParsing="false" text="Editar" />
    </children>
 </Pane>
