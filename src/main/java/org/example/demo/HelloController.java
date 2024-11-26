@@ -1,14 +1,20 @@
+
 package org.example.demo;
 
+import DAO.BrinquedoDAO;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Label;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -29,6 +35,73 @@ public class HelloController {
     private TextField materialField;
 
     @FXML
+    private TableView<Brinquedo> brinquedoTableView;
+
+    @FXML
+    private TableColumn<Brinquedo, String> tamanhoColumn;
+
+    @FXML
+    private TableColumn<Brinquedo, String> corColumn;
+
+    @FXML
+    private TableColumn<Brinquedo, String> materialColumn;
+
+    private final BrinquedoDAO brinquedoDAO = new BrinquedoDAO();
+
+    @FXML
+    public void initialize() {
+        // Configurar colunas da TableView
+        if (brinquedoTableView != null) {
+            tamanhoColumn.setCellValueFactory(new PropertyValueFactory<>("tamanho"));
+            corColumn.setCellValueFactory(new PropertyValueFactory<>("cor"));
+            materialColumn.setCellValueFactory(new PropertyValueFactory<>("material"));
+
+            // Carregar dados na TableView
+            carregarBrinquedos();
+        }
+    }
+
+    @FXML
+    public void onCriarButtonClick() {
+        String tamanho = tamanhoField.getText();
+        String cor = corField.getText();
+        String material = materialField.getText();
+
+        if (tamanho.isEmpty() || cor.isEmpty() || material.isEmpty()) {
+            mensagemLabel.setText("Todos os campos devem ser preenchidos!");
+            return;
+        }
+
+        Brinquedo novoBrinquedo = new Brinquedo(tamanho, cor, material);
+        brinquedoDAO.inserirBrinquedo(novoBrinquedo);
+
+        // Atualizar a tabela
+        carregarBrinquedos();
+
+        // Limpar os campos
+        tamanhoField.clear();
+        corField.clear();
+        materialField.clear();
+    }
+
+    @FXML
+    public void onDeletarButtonClick() {
+        Brinquedo selecionado = brinquedoTableView.getSelectionModel().getSelectedItem();
+        if (selecionado != null) {
+            brinquedoDAO.deletarBrinquedo(selecionado.getTamanho());
+            carregarBrinquedos();
+        } else {
+            mensagemLabel.setText("Selecione um brinquedo para deletar.");
+        }
+    }
+
+    private void carregarBrinquedos() {
+        ObservableList<Brinquedo> brinquedos = brinquedoDAO.listarBrinquedos();
+        brinquedoTableView.setItems(brinquedos);
+    }
+
+    // Resto do seu código permanece o mesmo
+    @FXML
     protected void onBrinquedoButtonClick() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Brinquedo.fxml"));
@@ -43,53 +116,14 @@ public class HelloController {
     }
 
     public void onBrincarButtonClick() {
-        //System.out.println("Hora de Brincar!");
         Brinquedo meuBrinquedo = new Brinquedo("pequeno", "amarelo", "plástico");
         meuBrinquedo.brincar();
-
     }
 
-
     public void onGuardarButtonClick() {
-        //System.out.println("Vamos guardar os brinquedos");
         Brinquedo meuBrinquedo = new Brinquedo("pequeno", "amarelo", "plástico");
         meuBrinquedo.guardar();
     }
-    @FXML
-    public void onCriarButtonClick() {
-        String tamanho = tamanhoField.getText();
-        String cor = corField.getText();
-        String material = materialField.getText();
-
-        if (tamanho.isEmpty() || cor.isEmpty() || material.isEmpty()) {
-            System.out.println("Todos os campos devem ser preenchidos!");
-            return;
-        }
-
-        try (Connection connection = DatabaseConnection.getConnection()) {
-            if (connection != null) {
-                String sql = "INSERT INTO brinquedos (tamanho, cor, material) VALUES (?, ?, ?)";
-                try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                    statement.setString(1, tamanho);
-                    statement.setString(2, cor);
-                    statement.setString(3, material);
-
-                    int rowsInserted = statement.executeUpdate();
-                    if (rowsInserted > 0) {
-                        System.out.println("Brinquedo inserido com sucesso!");
-                    } else {
-                        System.out.println("Falha ao inserir o brinquedo.");
-                    }
-                }
-            } else {
-                System.out.println("Conexão com o banco de dados falhou.");
-            }
-        } catch (SQLException e) {
-            System.err.println("Erro ao inserir no banco de dados: " + e.getMessage());
-        }
-    }
-
-
 
     @FXML
     protected void onCachorrosButtonClick() {
@@ -165,7 +199,7 @@ public class HelloController {
     }
 
     public void onPintarButtonClick() {
-       // mensagemLabel.setText("Hora de pintar a casa");
+        // mensagemLabel.setText("Hora de pintar a casa");
         Casas casas = new Casas("Amarela", "Grande", "Retangular");
         casas.pintar();
     }
@@ -211,13 +245,13 @@ public class HelloController {
     }
 
     public void onComerButtonClick() {
-       // mensagemLabel.setText("Hora de comer a fruta");
+        // mensagemLabel.setText("Hora de comer a fruta");
         Frutas frutas = new Frutas("doce", "amarela", "macio");
         frutas.comer();
     }
 
     public void onLavarButtonClick() {
-       // mensagemLabel.setText("Hora de lavar a fruta");
+        // mensagemLabel.setText("Hora de lavar a fruta");
         Frutas frutas = new Frutas("doce", "amarela", "macio");
         frutas.lavar();
     }
@@ -291,7 +325,7 @@ public class HelloController {
     }
 
     public void onDefenderButtonClick() {
-       // mensagemLabel.setText("Corre Pikachu!!!");
+        // mensagemLabel.setText("Corre Pikachu!!!");
         Pokemon pokemon = new Pokemon("amarelo", "eletrico", "6kg");
         pokemon.defender();
     }
@@ -310,7 +344,7 @@ public class HelloController {
         }
     }
     public void onJogarButtonClick() {
-       // mensagemLabel.setText("Bora jogar time!");
+        // mensagemLabel.setText("Bora jogar time!");
         Times times = new Times("Rio de Janeiro", "Vermelho", "Maracana");
         times.jogar();
     }
@@ -320,9 +354,5 @@ public class HelloController {
         Times times = new Times("Rio de Janeiro", "Vermelho", "Maracana");
         times.ganhar();
     }
-    }
-
-
-
-
+}
 
