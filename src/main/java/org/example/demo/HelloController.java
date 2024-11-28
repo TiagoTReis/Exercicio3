@@ -2,6 +2,7 @@
 package org.example.demo;
 
 import DAO.BrinquedoDAO;
+import DAO.CachorrosDAO;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,17 +47,42 @@ public class HelloController {
     @FXML
     private TableColumn<Brinquedo, String> materialColumn;
 
+    @FXML
+    private TextField racaField;
+
+    @FXML
+    private TextField pesoField;
+
+    @FXML
+    private TextField idadeField;
+
+    @FXML
+    private TableView<Cachorros> cachorroTableView;
+
+    @FXML
+    private TableColumn<Cachorros, String> racaColumn;
+
+    @FXML
+    private TableColumn<Cachorros, String> pesoColumn;
+
+    @FXML
+    private TableColumn<Cachorros, String> idadeColumn;
+
+
     private final BrinquedoDAO brinquedoDAO = new BrinquedoDAO();
+    private final CachorrosDAO cachorrosDAO = new CachorrosDAO();
+
 
     @FXML
     public void initialize() {
+        initializeCachorro();
         // Configurar colunas da TableView
         if (brinquedoTableView != null) {
             tamanhoColumn.setCellValueFactory(new PropertyValueFactory<>("tamanho"));
             corColumn.setCellValueFactory(new PropertyValueFactory<>("cor"));
             materialColumn.setCellValueFactory(new PropertyValueFactory<>("material"));
 
-            // Carregar dados na TableView
+
             carregarBrinquedos();
         }
     }
@@ -138,6 +164,90 @@ public class HelloController {
             e.printStackTrace();
         }
     }
+
+        @FXML
+    public void initializeCachorro() {
+        if (cachorroTableView != null) {
+            racaColumn.setCellValueFactory(new PropertyValueFactory<>("raca"));
+            pesoColumn.setCellValueFactory(new PropertyValueFactory<>("peso"));
+            idadeColumn.setCellValueFactory(new PropertyValueFactory<>("idade"));
+
+            carregarCachorros();
+        }
+    }
+    @FXML
+    public void onCriarCachorroButtonClick() {
+        String raca = racaField.getText();
+        String peso = pesoField.getText();
+        String idade = idadeField.getText();
+
+        if (raca.isEmpty() || peso.isEmpty() || idade.isEmpty()) {
+            mensagemLabel.setText("Todos os campos devem ser preenchidos!");
+            return;
+        }
+
+        Cachorros novoCachorro = new Cachorros(raca, peso, idade);
+        cachorrosDAO.inserirCachorro(novoCachorro);
+
+        carregarCachorros();
+
+        // Limpar campos
+        racaField.clear();
+        pesoField.clear();
+        idadeField.clear();
+    }
+
+    public void onCriarCachorroButtonClick(ActionEvent event) {
+
+    }
+
+    @FXML
+    public void onDeletarCachorroButtonClick() {
+        Cachorros selecionado = cachorroTableView.getSelectionModel().getSelectedItem();
+        if (selecionado != null) {
+            cachorrosDAO.deletarCachorro(selecionado.getId());
+            carregarCachorros();
+        } else {
+            mensagemLabel.setText("Selecione um cachorro para deletar.");
+        }
+    }
+
+    @FXML
+    public void onEditarCachorroButtonClick() {
+        Cachorros selecionado = cachorroTableView.getSelectionModel().getSelectedItem();
+        if (selecionado != null) {
+            String novaRaca = racaField.getText();
+            String novoPeso = pesoField.getText();
+            String novaIdade = idadeField.getText();
+
+            if (novaRaca.isEmpty() || novoPeso.isEmpty() || novaIdade.isEmpty()) {
+                mensagemLabel.setText("Preencha todos os campos para atualizar.");
+                return;
+            }
+
+            selecionado.setRaca(novaRaca);
+            selecionado.setPeso(novoPeso);
+            selecionado.setIdade(novaIdade);
+
+            cachorrosDAO.atualizarCachorro(selecionado);
+            carregarCachorros();
+
+            racaField.clear();
+            pesoField.clear();
+            idadeField.clear();
+        } else {
+            mensagemLabel.setText("Selecione um cachorro para editar.");
+        }
+    }
+
+
+
+
+    private void carregarCachorros() {ObservableList<Cachorros> cachorros = cachorrosDAO.listarCachorros();
+        cachorroTableView.setItems(cachorros);
+
+    }
+
 
     public void onLatirButtonClick() {
         //System.out.println("O Cachorro está latindo");
@@ -354,5 +464,7 @@ public class HelloController {
         Times times = new Times("Rio de Janeiro", "Vermelho", "Maracana");
         times.ganhar();
     }
+
+
 }
 
