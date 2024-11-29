@@ -3,6 +3,7 @@ package org.example.demo;
 
 import DAO.BrinquedoDAO;
 import DAO.CachorrosDAO;
+import DAO.CasasDAO;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import DAO.CarrosDAO;
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -68,20 +72,62 @@ public class HelloController {
     @FXML
     private TableColumn<Cachorros, String> idadeColumn;
 
+    @FXML
+    private TextField cor1Field;
+
+    @FXML
+    private TextField marca1Field;
+
+    @FXML
+    private TextField tipo1Field;
+
+    @FXML
+    private TableView<Carros> carroTableView;
+
+    @FXML
+    private TableColumn<Carros, String> cor1Column;
+
+    @FXML
+    private TableColumn<Carros, String> marca1Column;
+
+    @FXML
+    private TableColumn<Carros, String> tipo1Column;
+
+    @FXML
+    private TableView<Casas> casaTableView;
+
+    @FXML
+    private TableColumn<Casas, String> cor2Column;
+    @FXML
+    private TableColumn<Casas, String> tamanho2Column;
+    @FXML
+    private TableColumn<Casas, String> formato2Column;
+
+    @FXML
+    private TextField cor2Field;
+    @FXML
+    private TextField tamanho2Field;
+    @FXML
+    private TextField formato2Field;
+
+
+
 
     private final BrinquedoDAO brinquedoDAO = new BrinquedoDAO();
     private final CachorrosDAO cachorrosDAO = new CachorrosDAO();
-
+    private final CarrosDAO carrosDAO = new CarrosDAO();
+    private CasasDAO casasDAO = new CasasDAO();
 
     @FXML
     public void initialize() {
         initializeCachorro();
-        // Configurar colunas da TableView
+        initializeCarro();
+        initializeCasas();
+
         if (brinquedoTableView != null) {
             tamanhoColumn.setCellValueFactory(new PropertyValueFactory<>("tamanho"));
             corColumn.setCellValueFactory(new PropertyValueFactory<>("cor"));
             materialColumn.setCellValueFactory(new PropertyValueFactory<>("material"));
-
 
             carregarBrinquedos();
         }
@@ -197,10 +243,6 @@ public class HelloController {
         idadeField.clear();
     }
 
-    public void onCriarCachorroButtonClick(ActionEvent event) {
-
-    }
-
     @FXML
     public void onDeletarCachorroButtonClick() {
         Cachorros selecionado = cachorroTableView.getSelectionModel().getSelectedItem();
@@ -240,14 +282,9 @@ public class HelloController {
         }
     }
 
-
-
-
     private void carregarCachorros() {ObservableList<Cachorros> cachorros = cachorrosDAO.listarCachorros();
         cachorroTableView.setItems(cachorros);
-
     }
-
 
     public void onLatirButtonClick() {
         //System.out.println("O Cachorro está latindo");
@@ -275,17 +312,67 @@ public class HelloController {
         }
     }
 
+    public void initializeCarro() {
+        if (carroTableView != null) {
+            cor1Column.setCellValueFactory(new PropertyValueFactory<>("cor"));
+            marca1Column.setCellValueFactory(new PropertyValueFactory<>("marca"));
+            tipo1Column.setCellValueFactory(new PropertyValueFactory<>("tipo"));
+
+            carregarCarros();
+        }
+    }
+
+    private void carregarCarros() {
+        ObservableList<Carros> carros = carrosDAO.listarCarros();
+        carroTableView.setItems(carros);
+    }
+
     public void onAcelerarButtonClick() {
-        //mensagemLabel.setText("Bora Acelerar");
-        Carros carros = new Carros("Azul", "Porsche", "Esportivo");
+        Carros carros = new Carros(0,"Azul", "Porsche", "Esportivo");
         carros.acelerar();
     }
 
     public void onFrearButtonClick() {
-        //mensagemLabel.setText("Bora Frear o carro");
-        Carros carros = new Carros("Azul", "Porsche", "Esportivo");
+        Carros carros = new Carros(0,"Azul", "Porsche", "Esportivo");
         carros.frear();
+    }
 
+    public void onCriarCarroButtonClick() {
+        String cor = cor1Field.getText();
+        String marca = marca1Field.getText();
+        String tipo = tipo1Field.getText();
+
+        if (cor.isEmpty() || marca.isEmpty() || tipo.isEmpty()) {
+            mensagemLabel.setText("Todos os campos devem ser preenchidos!");
+            return;
+        }
+
+        Carros novoCarro = new Carros(0,cor, marca, tipo);
+        carrosDAO.inserirCarro(novoCarro);
+
+        carregarCarros();
+
+        cor1Field.clear();
+        marca1Field.clear();
+        tipo1Field.clear();
+    }
+
+    @FXML
+    public void onApagarCarroButtonClick() {
+        Carros selecionado = carroTableView.getSelectionModel().getSelectedItem();
+        if (selecionado != null) {
+            carrosDAO.deletarCarro(selecionado.getId());
+            carregarCarros();
+        } else {
+            mensagemLabel.setText("Selecione um carro para deletar.");
+        }
+    }
+
+    @FXML
+    public void onEditarCarroButtonClick() {
+        // Aqui você precisará identificar o carro a ser editado,
+        // e atualizar os dados no banco.
+        System.out.println("Implementar lógica para editar carro.");
     }
 
     @FXML
@@ -301,6 +388,77 @@ public class HelloController {
             e.printStackTrace();
         }
     }
+
+    // Método de inicialização
+    @FXML
+    public void initializeCasas() {
+        // Inicializa a TableView e carrega os dados das casas
+        if (casaTableView != null) {
+            cor2Column.setCellValueFactory(new PropertyValueFactory<>("cor"));
+            tamanho2Column.setCellValueFactory(new PropertyValueFactory<>("tamanho"));
+            formato2Column.setCellValueFactory(new PropertyValueFactory<>("formato"));
+            carregarCasas();
+        }
+    }
+
+    private void carregarCasas() {
+        ObservableList<Casas> casas = casasDAO.listarCasas();
+        casaTableView.setItems(casas);
+    }
+
+    // Método para adicionar uma nova casa
+    @FXML
+    private void onCriarCasaButtonClick() {
+        String cor = cor2Field.getText();
+        String tamanho = tamanho2Field.getText();
+        String formato = formato2Field.getText();
+
+        if (cor.isEmpty() || tamanho.isEmpty() || formato.isEmpty()) {
+            mensagemLabel.setText("Todos os campos devem ser preenchidos!");
+            return;
+        }
+
+        Casas novaCasa = new Casas(cor, tamanho, formato);
+        casasDAO.inserirCasa(novaCasa);
+        carregarCasas();
+
+        cor2Field.clear();
+        tamanho2Field.clear();
+        formato2Field.clear();
+    }
+
+    @FXML
+    private void onEditarCasaButtonClick() {
+        Casas casaSelecionada = casaTableView.getSelectionModel().getSelectedItem();
+        if (casaSelecionada != null) {
+            casaSelecionada.setCor(cor2Column.getText());
+            casaSelecionada.setTamanho(tamanho2Column.getText());
+            casaSelecionada.setFormato(formato2Column.getText());
+
+            casasDAO.atualizarCasa(casaSelecionada);
+            carregarCasas();
+
+
+            cor2Field.clear();
+            tamanho2Field.clear();
+            formato2Field.clear();
+        } else {
+            mensagemLabel.setText("Selecione uma casa para editar.");
+        }
+    }
+
+    // Método para excluir uma casa
+    @FXML
+    private void onDeletarCasaButtonClick() {
+        Casas casaSelecionada = casaTableView.getSelectionModel().getSelectedItem();
+        if (casaSelecionada != null) {
+            casasDAO.deletarCasa(casaSelecionada.getId());
+            carregarCasas(); // Atualiza a tabela
+        } else {
+            mensagemLabel.setText("Selecione uma casa para deletar.");
+        }
+    }
+
 
     public void onConstuirButtonClick() {
         //mensagemLabel.setText("Hora de construir a casa");
@@ -466,5 +624,8 @@ public class HelloController {
     }
 
 
+    public CarrosDAO getCarrosDAO() {
+        return carrosDAO;
+    }
 }
 

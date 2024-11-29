@@ -24,7 +24,7 @@
             <Image url="@Cachorros.png" />
          </image>
       </ImageView>
-      <Label fx:id="mensagemLabel" layoutX="421.0" layoutY="200.0" text="" />
+
       <Button layoutX="335.0" layoutY="347.0" mnemonicParsing="false" onAction="#onCriarCachorroButtonClick" text="Criar" />
       <Button layoutX="433.0" layoutY="347.0" mnemonicParsing="false" onAction="#onDeletarCachorroButtonClick" text="Apagar" />
       <Button layoutX="538.0" layoutY="347.0" mnemonicParsing="false" onAction="#onEditarCachorroButtonClick" text="Editar" />

@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -10,8 +12,8 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.HelloController">
    <children>
-      <Button layoutX="401.0" layoutY="113.0" mnemonicParsing="false" onAction="#onConstuirButtonClick" prefHeight="50.0" prefWidth="150.0" text="Construir" textAlignment="CENTER" />
-      <Button layoutX="401.0" layoutY="191.0" mnemonicParsing="false" onAction="#onPintarButtonClick" prefHeight="50.0" prefWidth="150.0" text="Pintar" textAlignment="CENTER" />
+      <Button layoutX="31.0" layoutY="338.0" mnemonicParsing="false" onAction="#onConstuirButtonClick" prefHeight="35.0" prefWidth="107.0" text="Construir" textAlignment="CENTER" />
+      <Button layoutX="177.0" layoutY="338.0" mnemonicParsing="false" onAction="#onPintarButtonClick" prefHeight="35.0" prefWidth="124.0" text="Pintar" textAlignment="CENTER" />
       <Label layoutX="253.0" layoutY="26.0" text="Casas">
          <font>
             <Font size="40.0" />
@@ -22,9 +24,21 @@
             <Image url="@casas.png" />
          </image>
       </ImageView>
-      <TextField layoutX="346.0" layoutY="296.0" prefHeight="25.0" prefWidth="250.0" />
-      <Button layoutX="346.0" layoutY="343.0" mnemonicParsing="false" text="Criar" />
-      <Button layoutX="444.0" layoutY="343.0" mnemonicParsing="false" text="Apagar" />
-      <Button layoutX="549.0" layoutY="343.0" mnemonicParsing="false" text="Editar" />
+      <Button layoutX="346.0" layoutY="346.0" mnemonicParsing="false" onAction="#onCriarCasaButtonClick" text="Criar" />
+      <Button layoutX="444.0" layoutY="346.0" mnemonicParsing="false" onAction="#onDeletarCasaButtonClick" text="Apagar" />
+      <Button layoutX="549.0" layoutY="346.0" mnemonicParsing="false" onAction="#onEditarCasaButtonClick" text="Editar" />
+      <Label layoutX="350.0" layoutY="115.0" text="Cor" />
+      <TextField fx:id="cor2Field" layoutX="391.0" layoutY="111.0" prefHeight="25.0" prefWidth="200.0" />
+      <Label layoutX="337.0" layoutY="155.0" text="Tamanho" />
+      <TextField fx:id="tamanho2Field" layoutX="391.0" layoutY="151.0" prefHeight="25.0" prefWidth="200.0" />
+      <Label layoutX="337.0" layoutY="195.0" text="Formato" />
+      <TextField fx:id="formato2Field" layoutX="391.0" layoutY="191.0" prefHeight="25.0" prefWidth="200.0" />
+      <TableView fx:id="casaTableView" layoutX="340.0" layoutY="248.0" prefHeight="80.0" prefWidth="255.0">
+         <columns>
+            <TableColumn fx:id="cor2Column" prefWidth="75.0" text="Cor" />
+            <TableColumn fx:id="tamanho2Column" prefWidth="75.0" text="Tamanho" />
+            <TableColumn fx:id="formato2Column" prefWidth="75.0" text="Formato" />
+         </columns>
+      </TableView>
    </children>
 </Pane>

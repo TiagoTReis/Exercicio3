@@ -2,76 +2,90 @@ package org.example.demo;
 
 public class Casas {
     // Atributos
+    private int id;
     private String cor;
     private String tamanho;
     private String formato;
 
-    // Construtor
+    // Construtores
+    public Casas(int id, String cor, String tamanho, String formato) {
+        this.id = id;
+        this.cor = cor;
+        this.tamanho = tamanho;
+        this.formato = formato;
+    }
+
     public Casas(String cor, String tamanho, String formato) {
         this.cor = cor;
         this.tamanho = tamanho;
         this.formato = formato;
     }
 
-    // Métodos getters e setters
-    public String getcor() {
+    // Getters e Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getCor() {
         return cor;
     }
 
-    public void setcor(String cor) {
+    public void setCor(String cor) {
         this.cor = cor;
     }
 
-    public String gettamanho() {
+    public String getTamanho() {
         return tamanho;
     }
 
-    public void settamanho(String tamanho) {
+    public void setTamanho(String tamanho) {
         this.tamanho = tamanho;
     }
 
-    public String getformato() {
+    public String getFormato() {
         return formato;
     }
 
-    public void setformato(String formato) {
+    public void setFormato(String formato) {
         this.formato = formato;
     }
 
-    // Método para morar na na casa
+
     public void morar() {
         System.out.println("Morar na casa!");
     }
 
-    // Método para construir a casa
     public void construir() {
-        System.out.println("Construir a casa");
+        System.out.println("Construir a casa!");
     }
 
-    // Método para pintar a casa
     public void pintar() {
-        System.out.println("Pintar a casa");
+        System.out.println("Pintar a casa!");
     }
 
-    // Método para exibir informações do casas
+
     @Override
     public String toString() {
-        return "casas [cor=" + cor + ", tamanho=" + tamanho + ", formato=" + formato + "]";
+        return "Casa [id=" + id + ", cor=" + cor + ", tamanho=" + tamanho + ", formato=" + formato + "]";
     }
 
-    // Método principal para testar a classe casas
+
     public static void main(String[] args) {
-        // Criando um objeto casas
-        Casas casas = new Casas("Amarela", "Grande", "Retangular");
+        // Criando objetos Casas
+        Casas casa1 = new Casas("Amarela", "Grande", "Retangular");
+        Casas casa2 = new Casas(1, "Verde", "Pequena", "Quadrada");
 
-        // Exibindo informações do casas
-        System.out.println(casas);
 
-        // Usando os métodos
-        casas.construir();
-        casas.morar();
-        casas.pintar();
+        System.out.println(casa1);
+        System.out.println(casa2);
+
+
+        casa1.construir();
+        casa2.morar();
+        casa1.pintar();
     }
-
 }
-

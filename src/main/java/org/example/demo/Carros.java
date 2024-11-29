@@ -1,76 +1,58 @@
 package org.example.demo;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 public class Carros {
-    // Atributos
-    private String cor;
-    private String marca;
-    private String tipo;
+    private final SimpleIntegerProperty id;
+    private final SimpleStringProperty cor;
+    private final SimpleStringProperty marca;
+    private final SimpleStringProperty tipo;
 
-    // Construtor
-    public Carros(String cor, String marca, String tipo) {
-        this.cor = cor;
-        this.marca = marca;
-        this.tipo = tipo;
+    public Carros(int id, String cor, String marca, String tipo) {
+        this.id = new SimpleIntegerProperty(id);
+        this.cor = new SimpleStringProperty(cor);
+        this.marca = new SimpleStringProperty(marca);
+        this.tipo = new SimpleStringProperty(tipo);
     }
 
-    // Métodos getters e setters
-    public String getcor() {
-        return cor;
+    public int getId() {
+        return id.get();
     }
 
-    public void setcor(String cor) {
-        this.cor = cor;
+    public void setId(int id) {
+        this.id.set(id);
     }
 
-    public String getmarca() {
-        return marca;
+    public String getCor() {
+        return cor.get();
     }
 
-    public void setmarca(String marca) {
-        this.marca = marca;
+    public void setCor(String cor) {
+        this.cor.set(cor);
     }
 
-    public String gettipo() {
-        return tipo;
+    public String getMarca() {
+        return marca.get();
     }
 
-    public void settipo(String tipo) {
-        this.tipo = tipo;
+    public void setMarca(String marca) {
+        this.marca.set(marca);
     }
 
-    // Método para acelerar o carro
+    public String getTipo() {
+        return tipo.get();
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo.set(tipo);
+    }
+
     public void acelerar() {
-        System.out.println("Hora de acelerar!");
+        System.out.println("Acelere o carro");
     }
 
-    // Método para frear o carros
     public void frear() {
         System.out.println("Hora de frear o carro");
     }
-
-    // Método para abastecer o carros
-    public void abastecer() {
-        System.out.println("Abastecer o carro");
-    }
-
-    // Método para exibir informações do carros
-
-    public String toString() {
-        return "carros [cor=" + cor + ", marca=" + marca + ", tipo=" + tipo + "]";
-    }
-
-    // Método principal para testar a classe carros
-    public static void main(String[] args) {
-        // Criando um objeto carros
-        Carros carros = new Carros("Azul", "Porsche", "Esportivo");
-
-        // Exibindo informações do carros
-        System.out.println(carros);
-
-        // Usando os métodos
-        carros.frear();
-        carros.acelerar();
-        carros.abastecer();
-    }
-
 }

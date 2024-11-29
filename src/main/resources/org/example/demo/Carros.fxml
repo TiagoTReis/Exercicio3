@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -10,22 +12,40 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.HelloController">
    <children>
-      <Button layoutX="387.0" layoutY="112.0" mnemonicParsing="false" onAction="#onAcelerarButtonClick" prefHeight="50.0" prefWidth="150.0" text="Acelerar" textAlignment="CENTER" />
-      <Button layoutX="387.0" layoutY="192.0" mnemonicParsing="false" onAction="#onFrearButtonClick" prefHeight="50.0" prefWidth="150.0" text="Frear" textAlignment="CENTER" />
       <Label layoutX="253.0" layoutY="26.0" text="Carros">
          <font>
             <Font size="40.0" />
          </font>
       </Label>
-      <ImageView fitHeight="217.0" fitWidth="308.0" layoutX="26.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="217.0" fitWidth="308.0" layoutX="14.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@carros.png" />
          </image>
       </ImageView>
-      <TextField layoutX="346.0" layoutY="296.0" prefHeight="25.0" prefWidth="250.0" />
-      <Button layoutX="346.0" layoutY="343.0" mnemonicParsing="false" text="Criar" />
-      <Button layoutX="444.0" layoutY="343.0" mnemonicParsing="false" text="Apagar" />
-      <Button layoutX="549.0" layoutY="343.0" mnemonicParsing="false" text="Editar" />
 
+
+      <Button layoutX="25.0" layoutY="331.0" mnemonicParsing="false" onAction="#onAcelerarButtonClick" prefHeight="32.0" prefWidth="113.0" text="Acelerar" textAlignment="CENTER" />
+      <Button layoutX="191.0" layoutY="331.0" mnemonicParsing="false" onAction="#onFrearButtonClick" prefHeight="32.0" prefWidth="125.0" text="Frear" textAlignment="CENTER" />
+
+
+      <Label layoutX="335.0" layoutY="106.0" text="Cor" />
+      <TextField fx:id="cor1Field" layoutX="389.0" layoutY="104.0" prefHeight="25.0" prefWidth="200.0" />
+      <Label layoutX="335.0" layoutY="146.0" text="Marca" />
+      <TextField fx:id="marca1Field" layoutX="389.0" layoutY="144.0" prefHeight="25.0" prefWidth="200.0" />
+      <Label layoutX="335.0" layoutY="186.0" text="Tipo" />
+      <TextField fx:id="tipo1Field" layoutX="389.0" layoutY="184.0" prefHeight="25.0" prefWidth="200.0" />
+
+      <!-- Botões de Ações -->
+      <Button layoutX="346.0" layoutY="338.0" mnemonicParsing="false" onAction="#onCriarCarroButtonClick" text="Criar" />
+      <Button layoutX="431.0" layoutY="338.0" mnemonicParsing="false" onAction="#onApagarCarroButtonClick" text="Apagar" />
+      <Button layoutX="518.0" layoutY="338.0" mnemonicParsing="false" onAction="#onEditarCarroButtonClick" text="Editar" />
+      <TableView fx:id="carroTableView" layoutX="333.0" layoutY="238.0" prefHeight="80.0" prefWidth="255.0">
+         <columns>
+            <TableColumn fx:id="cor1Column" prefWidth="75.0" text="Cor" />
+            <TableColumn fx:id="marca1Column" prefWidth="75.0" text="Marca" />
+            <TableColumn fx:id="tipo1Column" prefWidth="75.0" text="Tipo" />
+         </columns>
+
+      </TableView>
    </children>
 </Pane>
