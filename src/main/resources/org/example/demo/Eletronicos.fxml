@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -10,21 +12,33 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demo.HelloController">
    <children>
-      <Button layoutX="396.0" layoutY="119.0" mnemonicParsing="false" onAction="#onGuardar2ButtonClick" prefHeight="50.0" prefWidth="150.0" text="Guardar" textAlignment="CENTER" />
-      <Button layoutX="397.0" layoutY="205.0" mnemonicParsing="false" onAction="#onLigarButtonClick" prefHeight="50.0" prefWidth="150.0" text="Ligar" textAlignment="CENTER" />
+      <Button layoutX="26.0" layoutY="344.0" mnemonicParsing="false" onAction="#onGuardar2ButtonClick" prefHeight="37.0" prefWidth="111.0" text="Guardar" textAlignment="CENTER" />
+      <Button layoutX="179.0" layoutY="344.0" mnemonicParsing="false" onAction="#onLigarButtonClick" prefHeight="37.0" prefWidth="111.0" text="Ligar" textAlignment="CENTER" />
       <Label layoutX="204.0" layoutY="23.0" text="Eletronicos">
          <font>
             <Font size="40.0" />
          </font>
       </Label>
-      <ImageView fitHeight="217.0" fitWidth="308.0" layoutX="25.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="217.0" fitWidth="308.0" layoutX="14.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@eletronicos.png" />
          </image>
       </ImageView>
-      <TextField layoutX="343.0" layoutY="296.0" prefHeight="25.0" prefWidth="250.0" />
-      <Button layoutX="343.0" layoutY="343.0" mnemonicParsing="false" text="Criar" />
-      <Button layoutX="441.0" layoutY="343.0" mnemonicParsing="false" text="Apagar" />
-      <Button layoutX="546.0" layoutY="343.0" mnemonicParsing="false" text="Editar" />
+      <Button fx:id="onCriarEletronicoButtonClick" layoutX="338.0" layoutY="353.0" mnemonicParsing="false" text="Criar" />
+      <Button fx:id="onExcluirEletronicoButtonClick" layoutX="436.0" layoutY="353.0" mnemonicParsing="false" text="Apagar" />
+      <Button layoutX="541.0" layoutY="353.0" mnemonicParsing="false" text="Editar" />
+      <Label layoutX="337.0" layoutY="119.0" text="Formato" />
+      <TextField fx:id="formato3Field" layoutX="386.0" layoutY="115.0" prefHeight="25.0" prefWidth="200.0" />
+      <Label layoutX="348.0" layoutY="159.0" text="Cor" />
+      <TextField fx:id="cor3Field" layoutX="386.0" layoutY="155.0" prefHeight="25.0" prefWidth="200.0" />
+      <Label layoutX="334.0" layoutY="200.0" text="Material" />
+      <TextField fx:id="material3Field" layoutX="386.0" layoutY="195.0" prefHeight="25.0" prefWidth="200.0" />
+      <TableView fx:id="eletronicosTable" layoutX="336.0" layoutY="254.0" prefHeight="80.0" prefWidth="255.0">
+         <columns>
+            <TableColumn fx:id="formato3Column" prefWidth="75.0" text="Formato" />
+            <TableColumn fx:id="cor3Column" prefWidth="75.0" text="Cor" />
+            <TableColumn fx:id="material3Column" prefWidth="75.0" text="Material" />
+         </columns>
+      </TableView>
    </children>
 </Pane>

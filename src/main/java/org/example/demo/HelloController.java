@@ -1,9 +1,8 @@
 
 package org.example.demo;
 
-import DAO.BrinquedoDAO;
-import DAO.CachorrosDAO;
-import DAO.CasasDAO;
+import DAO.*;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,7 +15,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import DAO.CarrosDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -110,6 +108,24 @@ public class HelloController {
     @FXML
     private TextField formato2Field;
 
+    @FXML
+    private TextField formato3Field;
+    @FXML
+    private TextField cor3Field;
+    @FXML
+    private TextField material3Field;
+    @FXML
+    private TableView<Eletronicos> eletronicosTable;
+    @FXML
+    private TableColumn<Eletronicos, String> formato3Column;
+    @FXML
+    private TableColumn<Eletronicos, String> cor3Column;
+    @FXML
+    private TableColumn<Eletronicos, String> material3Column;
+
+
+
+
 
 
 
@@ -117,12 +133,14 @@ public class HelloController {
     private final CachorrosDAO cachorrosDAO = new CachorrosDAO();
     private final CarrosDAO carrosDAO = new CarrosDAO();
     private CasasDAO casasDAO = new CasasDAO();
+    private EletronicosDAO eletronicosDAO = new EletronicosDAO();
 
     @FXML
     public void initialize() {
         initializeCachorro();
         initializeCarro();
         initializeCasas();
+        initializeEletronicos();
 
         if (brinquedoTableView != null) {
             tamanhoColumn.setCellValueFactory(new PropertyValueFactory<>("tamanho"));
@@ -132,6 +150,8 @@ public class HelloController {
             carregarBrinquedos();
         }
     }
+
+
 
     @FXML
     public void onCriarButtonClick() {
@@ -406,7 +426,6 @@ public class HelloController {
         casaTableView.setItems(casas);
     }
 
-    // Método para adicionar uma nova casa
     @FXML
     private void onCriarCasaButtonClick() {
         String cor = cor2Field.getText();
@@ -486,17 +505,66 @@ public class HelloController {
         }
     }
 
+    private void initializeEletronicos() {
+        if (eletronicosTable != null) {
+            formato3Column.setCellValueFactory(new PropertyValueFactory<>("formato"));
+            cor3Column.setCellValueFactory(new PropertyValueFactory<>("cor"));
+            material3Column.setCellValueFactory(new PropertyValueFactory<>("material"));
+            carregarEletronicos();
+        }
+    }
+
+    private void carregarEletronicos() {
+        ObservableList<Eletronicos> lista = FXCollections.observableArrayList(eletronicosDAO.listarEletronicos());
+        eletronicosTable.setItems(lista);
+    }
+
+    @FXML
+    private void onCriarEletronicoButtonClick() {
+        String formato = formato3Field.getText();
+        String cor = cor3Field.getText();
+        String material = material3Field.getText();
+
+        if (formato.isEmpty() || cor.isEmpty() || material.isEmpty()) {
+            mensagemLabel.setText("Todos os campos devem ser preenchidos!");
+            return;
+        }
+
+        Eletronicos novoEletronico = new Eletronicos(0,formato, cor, material);
+        eletronicosDAO.inserirEletronico(novoEletronico);
+        carregarEletronicos();
+
+        formato3Field.clear();
+        cor3Field.clear();
+        material3Field.clear();
+    }
+
+    // Método para excluir um eletrônico
+    @FXML
+    private void onExcluirEletronicoButtonClick() {
+        Eletronicos eletronicoSelecionado = eletronicosTable.getSelectionModel().getSelectedItem();
+        if (eletronicoSelecionado != null) {
+            eletronicosDAO.deletarEletronico(eletronicoSelecionado.getId()); // Supondo que a classe Eletronicos tenha um método getId()
+            carregarEletronicos(); // Atualiza a tabela
+        } else {
+            mensagemLabel.setText("Selecione um eletrônico para deletar.");
+        }
+    }
+
+
     public void onGuardar2ButtonClick() {
         //mensagemLabel.setText("Hora de guardar os eletronicos");
-        Eletronicos eletronicos = new Eletronicos("Retangular", "Cinza", "Plastico");
+        Eletronicos eletronicos = new Eletronicos(0,"Retangular", "Cinza", "Plastico");
         eletronicos.guardar();
     }
 
     public void onLigarButtonClick() {
         //mensagemLabel.setText("Hora de ligar os eletronicos");
-        Eletronicos eletronicos = new Eletronicos("Retangular", "Cinza", "Plastico");
+        Eletronicos eletronicos = new Eletronicos(0,"Retangular", "Cinza", "Plastico");
         eletronicos.ligar();
     }
+
+
 
     @FXML
     protected void onFrutasButtonClick() {

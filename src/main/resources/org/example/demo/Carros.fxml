@@ -40,12 +40,11 @@
       <Button layoutX="431.0" layoutY="338.0" mnemonicParsing="false" onAction="#onApagarCarroButtonClick" text="Apagar" />
       <Button layoutX="518.0" layoutY="338.0" mnemonicParsing="false" onAction="#onEditarCarroButtonClick" text="Editar" />
       <TableView fx:id="carroTableView" layoutX="333.0" layoutY="238.0" prefHeight="80.0" prefWidth="255.0">
-         <columns>
-            <TableColumn fx:id="cor1Column" prefWidth="75.0" text="Cor" />
-            <TableColumn fx:id="marca1Column" prefWidth="75.0" text="Marca" />
+        <columns>
+          <TableColumn fx:id="cor1Column" prefWidth="75.0" text="Cor" />
+          <TableColumn fx:id="marca1Column" prefWidth="75.0" text="Marca" />
             <TableColumn fx:id="tipo1Column" prefWidth="75.0" text="Tipo" />
-         </columns>
-
+        </columns>
       </TableView>
    </children>
 </Pane>
