@@ -390,8 +390,7 @@ public class HelloController {
 
     @FXML
     public void onEditarCarroButtonClick() {
-        // Aqui você precisará identificar o carro a ser editado,
-        // e atualizar os dados no banco.
+
         System.out.println("Implementar lógica para editar carro.");
     }
 
@@ -412,7 +411,7 @@ public class HelloController {
     // Método de inicialização
     @FXML
     public void initializeCasas() {
-        // Inicializa a TableView e carrega os dados das casas
+
         if (casaTableView != null) {
             cor2Column.setCellValueFactory(new PropertyValueFactory<>("cor"));
             tamanho2Column.setCellValueFactory(new PropertyValueFactory<>("tamanho"));
@@ -544,8 +543,8 @@ public class HelloController {
     private void onExcluirEletronicoButtonClick() {
         Eletronicos eletronicoSelecionado = eletronicosTable.getSelectionModel().getSelectedItem();
         if (eletronicoSelecionado != null) {
-            eletronicosDAO.deletarEletronico(eletronicoSelecionado.getId()); // Supondo que a classe Eletronicos tenha um método getId()
-            carregarEletronicos(); // Atualiza a tabela
+            eletronicosDAO.deletarEletronico(eletronicoSelecionado.getId());
+            carregarEletronicos();
         } else {
             mensagemLabel.setText("Selecione um eletrônico para deletar.");
         }

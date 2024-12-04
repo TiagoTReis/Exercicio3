@@ -24,8 +24,8 @@
             <Image url="@eletronicos.png" />
          </image>
       </ImageView>
-      <Button fx:id="onCriarEletronicoButtonClick" layoutX="338.0" layoutY="353.0" mnemonicParsing="false" text="Criar" />
-      <Button fx:id="onExcluirEletronicoButtonClick" layoutX="436.0" layoutY="353.0" mnemonicParsing="false" text="Apagar" />
+      <Button  layoutX="338.0" layoutY="353.0" onAction="#onCriarEletronicoButtonClick" mnemonicParsing="false" text="Criar" />
+      <Button  layoutX="436.0" layoutY="353.0" onAction="#onExcluirEletronicoButtonClick" mnemonicParsing="false"  text="Apagar" />
       <Button layoutX="541.0" layoutY="353.0" mnemonicParsing="false" text="Editar" />
       <Label layoutX="337.0" layoutY="119.0" text="Formato" />
       <TextField fx:id="formato3Field" layoutX="386.0" layoutY="115.0" prefHeight="25.0" prefWidth="200.0" />
